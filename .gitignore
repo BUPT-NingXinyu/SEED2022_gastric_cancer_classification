@@ -1,0 +1,10 @@
+*/__pycache__
+*/.ipynb_checkpoints
+.ipynb_checkpoints
+
+data
+train
+val
+Test
+resnet_output_dir
+result.csv

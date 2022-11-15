@@ -4,6 +4,12 @@
 
 ## 初赛
 
-数据预处理：
+### 数据预处理
 
 * kfb2svs2jpg：将kfb病理切片扫描转换为jpg图片
+
+### 分类模型
+
+Resnet18 作为 baseline
+* 训练 notebook：resnet_baseline.ipynb
+* 代码：resnet_baseline 文件夹
