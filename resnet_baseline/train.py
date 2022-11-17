@@ -121,7 +121,7 @@ def build_transform(is_train, args):
                 torchvision.transforms.RandomPerspective(distortion_scale=0.6, p=1.0),  # 随机调整角度
                 torchvision.transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
                 torchvision.transforms.ToTensor(),
-                torchvision.transforms.Normalize(mean=[0.64652182, 0.58588489, 0.64451334], std=[0.37205338, 0.36406497, 0.37243282])
+                torchvision.transforms.Normalize(mean=[0.4304976,  0.38631701, 0.42988439], std=[0.42719202, 0.4007811,  0.42732545])
             ]
         )
 
@@ -131,7 +131,7 @@ def build_transform(is_train, args):
         [
             torchvision.transforms.Resize((args.input_size, args.input_size)),
             torchvision.transforms.ToTensor(),
-            torchvision.transforms.Normalize(mean=[0.64652182, 0.58588489, 0.64451334], std=[0.37205338, 0.36406497, 0.37243282])
+            torchvision.transforms.Normalize(mean=[0.4304976,  0.38631701, 0.42988439], std=[0.42719202, 0.4007811,  0.42732545])
         ]
     )
 
@@ -342,5 +342,5 @@ if __name__ == '__main__':
                 img_name, img_pre_idx = main(args, mode=mode, test_image_path=image)
                 print(img_name)
                 print(img_pre_idx)
-                row = [img_name + '_Annotation' + img_pre_idx]
+                row = [img_name, img_pre_idx]
                 w.writerow(row) #按行写入

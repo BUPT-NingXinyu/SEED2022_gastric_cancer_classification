@@ -7,6 +7,7 @@
 ### 数据预处理
 
 * kfb2svs2jpg：将kfb病理切片扫描转换为jpg图片
+* svs_mask2jpg.ipynb：将svs图片按照json标注做mask保存为jpg
 
 ### 分类模型
 
