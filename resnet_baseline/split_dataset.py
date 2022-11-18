@@ -7,7 +7,7 @@ from PIL import Image
 
 if __name__ == '__main__':
     test_split_ratio = 0.05
-    desired_size = 128  # 图片缩放后的统一大小
+    desired_size = 512  # 图片缩放后的统一大小
     raw_path = './data'
 
     dirs = glob.glob(os.path.join(raw_path, '*'))

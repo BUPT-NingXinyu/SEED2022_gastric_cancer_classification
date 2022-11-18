@@ -121,7 +121,7 @@ def build_transform(is_train, args):
                 torchvision.transforms.RandomPerspective(distortion_scale=0.6, p=1.0),  # 随机调整角度
                 torchvision.transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
                 torchvision.transforms.ToTensor(),
-                torchvision.transforms.Normalize(mean=[0.4304976,  0.38631701, 0.42988439], std=[0.42719202, 0.4007811,  0.42732545])
+                torchvision.transforms.Normalize(mean=[0.41934779, 0.36950064, 0.42390385], std=[0.31668262, 0.29834305, 0.31997452])
             ]
         )
 
@@ -131,7 +131,7 @@ def build_transform(is_train, args):
         [
             torchvision.transforms.Resize((args.input_size, args.input_size)),
             torchvision.transforms.ToTensor(),
-            torchvision.transforms.Normalize(mean=[0.4304976,  0.38631701, 0.42988439], std=[0.42719202, 0.4007811,  0.42732545])
+            torchvision.transforms.Normalize(mean=[0.41934779, 0.36950064, 0.42390385], std=[0.31668262, 0.29834305, 0.31997452])
         ]
     )
 
@@ -149,7 +149,7 @@ def build_dataset(is_train, args):
 
 def get_args_parser():
     parser = argparse.ArgumentParser('MAE fine-tuning for image classification', add_help=False)
-    parser.add_argument('--batch_size', default=4, type=int,
+    parser.add_argument('--batch_size', default=32, type=int,
                         help='Batch size per GPU (effective batch size is batch_size * accum_iter * # gpus')
     parser.add_argument('--epochs', default=50, type=int)
     parser.add_argument('--accum_iter', default=1, type=int,
@@ -159,7 +159,7 @@ def get_args_parser():
 
     # Model parameters
 
-    parser.add_argument('--input_size', default=128, type=int,
+    parser.add_argument('--input_size', default=512, type=int,
                         help='images input size')
 
     # Optimizer parameters
@@ -220,7 +220,7 @@ def main(args, mode='train', test_image_path=''):
         )
 
         # 构建模型
-        model = timm.create_model('resnet18', pretrained=True, num_classes=5, drop_rate=0.1, drop_path_rate=0.1)
+        model = timm.create_model('resnet50', pretrained=True, num_classes=5, drop_rate=0.1, drop_path_rate=0.1)
 
         model.to(device)  # 将模型送入训练设备 (cpu或gpu)
 
@@ -283,7 +283,7 @@ def main(args, mode='train', test_image_path=''):
         print(f'best acc is {best_acc} at {best_epoch} epoch')
         
     else:
-        model = timm.create_model('resnet18', pretrained=False, num_classes=5, drop_rate=0.1, drop_path_rate=0.1)
+        model = timm.create_model('resnet50', pretrained=False, num_classes=5, drop_rate=0.1, drop_path_rate=0.1)
 
         model.to(device)
 
