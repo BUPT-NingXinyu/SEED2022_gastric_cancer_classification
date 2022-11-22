@@ -26,3 +26,7 @@ Resnet18 作为 baseline
 2022.11.18
 修改notebook：resnet_baseline.ipynb 对应 train.py
 * Resnet50 作为 baseline
+
+densenet169
+
+ConvNeXt-base

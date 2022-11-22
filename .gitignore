@@ -6,6 +6,9 @@
 */*/*.pth
 
 data
+npy
+raw
+Test_patch
 train
 val
 Test
